@@ -1,0 +1,24 @@
+digraph {
+	x
+	"OneHotEncoder(protocol_type)"
+	"OneHotEncoder(service)"
+	"OneHotEncoder(flag)"
+	"~['flag', 'protocol_type', 'service']"
+	StandardScaler
+	LogisticRegression
+	y
+	x -> "OneHotEncoder(protocol_type)"
+	x -> "OneHotEncoder(service)"
+	x -> "OneHotEncoder(flag)"
+	{
+		"~['flag', 'protocol_type', 'service']"
+		StandardScaler
+		"~['flag', 'protocol_type', 'service']" -> StandardScaler
+	}
+	x -> "~['flag', 'protocol_type', 'service']"
+	LogisticRegression -> y
+	"OneHotEncoder(protocol_type)" -> LogisticRegression
+	"OneHotEncoder(service)" -> LogisticRegression
+	"OneHotEncoder(flag)" -> LogisticRegression
+	StandardScaler -> LogisticRegression
+}
